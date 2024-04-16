@@ -99,18 +99,42 @@ qq_resids_one = (ggplot(oystercatcher_py, aes(sample=resids))
                  + labs(title='Q-Q Residuals'))
 qq_resids_one.show()
 
-
-
-
+"""Q-Q plot for residuals looks normally distributed. Assumption met."""
 
 # Now test for equality of variance using Bartlett's Test
 print("----")
-print(pg.homoscedasticity(dv="feeding",
+print(pg.homoscedasticity(dv="feeding",  # Homoscedasticity is refers to equality of variance
                           group="site",
                           method="bartlett",
                           data=oystercatcher_py))
 
+""" P value is over 0.05 so we cannot reject the null hypothesis that variance across all groups is equal.
+    This means that the variance across all groups IS equal. Assumption met."""
 
+""" There are a series of diagnostic plots that can be used instead of doing everything individually.
+    This is easy in R but the function to create this plots has been written manually for python, see the 
+    functions package."""
 
+# Diagnostic plots.
+dgplots(lm_oystercatcher_py)
 
+'''
+1. The first graph plots the Residuals plot. If the data are best explained by a linear line then there should be 
+   a uniform distribution of points above and below the horizontal blue line (and if there are sufficient points then 
+   the red line, which is a smoother line, should be on top of the blue line). This plot looks pretty good.
 
+2. The second graph shows the Q-Q plot which allows a visual inspection of normality. If the residuals are normally 
+   distributed, then the points should lie on the diagonal blue line. This plot looks good.
+   
+3. The third graph shows the Location-Scale graph which allows us to investigate whether there is any correlation 
+   between the residuals and the predicted values and whether the variance of the residuals changes significantly. If 
+   not, then the red line should be horizontal. If there is any correlation or change in variance then the red line 
+   will not be horizontal. This plot is fine.
+   
+4. The last graph shows the Influential points and tests if any one point has an unnecessarily large effect on the fit. 
+   Here we’re using the Cook’s distance as a measure. A rule of thumb is that if any value is larger than 1.0, then it 
+   might have a large effect on the model. If not, then no point has undue influence. This plot is good. There are 
+   different ways to determine the threshold (apart from simply setting it to 1) and in this plot the blue dashed line 
+   is at 4/n, with n being the number of samples. At this threshold there are some data points that may be influential, 
+   but I personally find this threshold rather strict.
+'''

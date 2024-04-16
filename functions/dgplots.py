@@ -36,6 +36,7 @@ def dgplots(results: Type[sm.regression.linear_model.RegressionResultsWrapper]) 
                 + ylab("residuals")
                 + theme_bw()
         )
+        p1.show()
 
         p2 = (
                 ggplot(model_values, aes(sample="residuals"))
@@ -46,6 +47,7 @@ def dgplots(results: Type[sm.regression.linear_model.RegressionResultsWrapper]) 
                 + ylab("sample quantiles")
                 + theme_bw()
         )
+        p2.show()
 
         p3 = (
                 ggplot(model_values, aes(x="predicted_values", y="std_resid"))
@@ -56,6 +58,7 @@ def dgplots(results: Type[sm.regression.linear_model.RegressionResultsWrapper]) 
                 + ylab(u"\u221A"'|standardised residuals|')
                 + theme_bw()
         )
+        p3.show()
 
         p4 = (
                 ggplot(model_values, aes(x="obs", y="cooks_d"))
@@ -68,11 +71,4 @@ def dgplots(results: Type[sm.regression.linear_model.RegressionResultsWrapper]) 
                 + ylab('cook\'s d')
                 + theme_bw()
         )
-
-        p1 = pw.load_ggplot(p1, figsize=(3, 2))
-        p2 = pw.load_ggplot(p2, figsize=(3, 2))
-        p3 = pw.load_ggplot(p3, figsize=(3, 2))
-        p4 = pw.load_ggplot(p4, figsize=(3, 2))
-
-        dgplots = (p1 | p2) / (p3 | p4)
-        return dgplots.savefig()
+        p4.show()
