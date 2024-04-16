@@ -2,6 +2,7 @@ import pandas as pd  # A Python data analysis and manipulation tool
 import pingouin as pg  # Simple yet exhaustive stats functions.
 from plotnine import *  # Python equivalent of `ggplot2`
 from functions import *  # Import the functions we have written
+import statsmodels.api as sm  # Statistical models, conducting tests and statistical data exploration
 import statsmodels.formula.api as smf  # Convenience interface for specifying models using formula strings & DataFrames
 
 # Categorical predictors #
@@ -374,5 +375,72 @@ We will be testing the following null and alternative hypotheses:
 H0: assault is not a significant predictor of murder, B1 = 0
 H1: assault is a significant predictor of murder, B1 != 0
 """
+
+# Read in the data
+USArrests_py = pd.read_csv(f"{work_dir}data/CS3-usarrests.csv")
+
+# Create a scatterplot of the data
+# create scatterplot of the data
+scatt_one = (ggplot(USArrests_py, aes("assault", "murder"))
+             + geom_point())
+scatt_one.show()
+
+"""
+The following four assumptions need to be met:
+
+1. The data must be linear (it is entirely possible to calculate a straight line through data that is not straight - it 
+   doesn’t mean that you should!)
+2. The residuals must be normally distributed
+3. The residuals must not be correlated with their fitted values (i.e. they should be independent).
+4. The fit should not depend overly much on a single point (no point should have high leverage).
+"""
+
+# Create a linear model
+model = smf.ols(formula="murder ~ assault", data=USArrests_py)
+# Get the fitted parameters of the model
+lm_USArrests_py = model.fit()
+
+# Create the diagnostic plots
+dgplots(lm_USArrests_py)
+
+"""
+Diagnostic plots look okay.
+"""
+
+# We have already implemented the model, so we just need to look at it
+print('----')
+print(lm_USArrests_py.summary())
+
+"""
+We are after the coef values, where the intercept is 0.6317 and the slope is 0.0419.
+
+So here we have found that the line of best fit is given by:
+
+Murder = 0.63 + 0.042 x Assault.
+
+Next we can assess whether the slope is significantly different from zero:
+"""
+# Perform the ANOVA
+print('----')
+print(sm.stats.anova_lm(lm_USArrests_py, typ = 2))
+
+"""
+The p-value is what we’re most interested in here and shows us the probability of getting data such as ours if the 
+null hypothesis were actually true and the slope of the line were actually zero. Since the p-value is excruciatingly 
+tiny we can reject our null hypothesis and state that:
+
+            'A simple linear regression showed that the assault rate in US states was a significant predictor of the 
+             number of murders (p = 2.60x10-12).'
+
+The p value is used here is better than the above output as it will be considered for each predictor.
+"""
+
+
+# It can be useful to plot the regression line for visual expression
+scatt_two = (ggplot(USArrests_py, aes("assault", "murder"))
+             + geom_point()
+             + geom_smooth(method="lm", se=False, colour="blue"))
+scatt_two.show()
+
 
 
