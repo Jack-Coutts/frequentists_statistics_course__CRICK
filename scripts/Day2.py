@@ -174,7 +174,13 @@ hypothesis and state that:
 
 '''
 
+# Post Hoc Testing (Tukey’s range test)
 
+'''
+One drawback with using an ANOVA test is that it only tests to see if all of the means are the same. If we get a 
+significant result using ANOVA then all we can say is that not all of the means are the same, rather than anything 
+about how the pairs of groups differ.
+'''
 
 
 
