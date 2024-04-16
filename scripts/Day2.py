@@ -138,3 +138,44 @@ dgplots(lm_oystercatcher_py)
    is at 4/n, with n being the number of samples. At this threshold there are some data points that may be influential, 
    but I personally find this threshold rather strict.
 '''
+
+# Implement the ANOVA
+print('----')
+print(pg.anova(dv="feeding",
+               between="site",
+               data=oystercatcher_py,
+               detailed=True))
+
+'''
+This creates a linear model based on the data, i.e. finds the means of the three groups and calculates a load of 
+intermediary data that we need for the statistical analysis.
+
+In the output:
+
+Source: Factor names - in our case these are the different sites (site)
+SS: Sums of squares (we’ll get to that in a bit)
+DF: Degrees of freedom (at the moment only used for reporting)
+MS: Mean squares
+F: Our F-statistic
+p-unc: p-value (unc stands for “uncorrected” - more on multiple testing correction later)
+np2: Partial eta-square effect sizes (more on this later)
+
+
+
+Again, the p-value is what we’re most interested in here and shows us the probability of getting samples such as ours 
+if the null hypothesis were actually true.
+
+Since the p-value is very small (much smaller than the standard significance level of 0.05) we can say “that it is 
+very unlikely that these three samples came from the same parent distribution” and as such we can reject our null 
+hypothesis and state that:
+
+        'A one-way ANOVA showed that the mean feeding rate of oystercatchers differed significantly 
+         between locations (p = 4.13e-33).'
+
+'''
+
+
+
+
+
+
