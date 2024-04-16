@@ -2,3 +2,4 @@ pandas
 plotnine
 pingouin
 statsmodels
+patchworklib
