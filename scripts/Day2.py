@@ -1,9 +1,10 @@
 import pandas as pd  # A Python data analysis and manipulation tool
 import pingouin as pg  # Simple yet exhaustive stats functions.
 from plotnine import *  # Python equivalent of `ggplot2`
-from functions import *
-import statsmodels.api as sm  # Statistical models, conducting tests and statistical data exploration
+from functions import *  # Import the functions we have written
 import statsmodels.formula.api as smf  # Convenience interface for specifying models using formula strings & DataFrames
+
+# Categorical predictors #
 
 # ANOVA #
 
@@ -174,14 +175,204 @@ hypothesis and state that:
 
 '''
 
-# Post Hoc Testing (Tukey’s range test)
+# Post Hoc Testing (Tukey’s range test) #
 
 '''
 One drawback with using an ANOVA test is that it only tests to see if all of the means are the same. If we get a 
 significant result using ANOVA then all we can say is that not all of the means are the same, rather than anything 
 about how the pairs of groups differ.
+
+Take the following example:
+
+Each group is a random sample of 20 points from a normal distribution with variance 1. Groups 1 and 2 come from a 
+parent population with mean 0 whereas group 3 come from a parent population with mean 2. The data clearly satisfy the 
+assumptions of an ANOVA test so I won't check them below.
 '''
 
+# Load the data
+tukey_py = pd.read_csv(f"{work_dir}data/CS2-tukey.csv")
 
+# Have a look at the data
+print('----')
+print(tukey_py.head())
+
+# Plot the data
+bp_two = (ggplot(tukey_py, aes("group", "response"))
+          + geom_boxplot())
+bp_two.show()
+
+# Test for a significant difference in group means
+print('----')
+print(pg.anova(dv="response",
+               between="group",
+               data=tukey_py,
+               detailed=True))
+
+"""
+Here we have a p-value of 2.39*10-7 and so the test has very conclusively rejected the hypothesis that all 
+means are equal.
+
+However, this was not due to all of the sample means being different, but rather just because one of the groups is very 
+different from the others. In order to drill down and investigate this further we use a new test called Tukey’s range 
+test.
+
+This will compare all of the groups in a pairwise fashion and reports on whether a significant difference exists.
+"""
+
+# Perform Tukey’s test
+print('----')
+print(pg.pairwise_tukey(dv="response",
+                        between="group",
+                        data=tukey_py).transpose())
+
+"""
+As we can see that there isn’t a significant difference between sample1 and sample2 but there is a significant 
+difference between sample1 and sample3, as well as sample2 and sample3. This matches with what we expected based on the 
+box plot.
+
+Tukey’s range test, when we decide to use it, requires the same three assumptions as an ANOVA test:
+
+1. Normality of distributions
+2. Equality of variance between groups
+3. Independence of observations
+"""
+
+# Kruskal-Wallis #
+
+"""
+The Kruskal-Wallis one-way analysis of variance test is an analogue of ANOVA that can be used when the assumption of 
+normality cannot be met. In this way it is an extension of the Mann-Whitney test for two groups.
+"""
+
+
+import scikit_posthocs as sp  # Post-hoc tests - includes Dunn's test not in pingouin
+
+
+"""
+Data
+
+For example, suppose a behavioural ecologist records the rate at which spider monkeys behaved aggressively towards one 
+another, as a function of how closely related the monkeys are. The familiarity of the two monkeys involved in each 
+interaction is classified as high, low or none. We want to test if the data support the hypothesis that aggression 
+rates differ according to strength of relatedness. We form the following null and alternative hypotheses:
+
+H0: The median aggression rates for all types of familiarity are the same
+H1: The median aggression rates are not all equal
+
+We will use a Kruskal-Wallis test to check this.
+"""
+
+# Read in the data
+spidermonkey_py = pd.read_csv(f"{work_dir}data/CS2-spidermonkey.csv")
+
+# Look at the data
+print('----')
+print(spidermonkey_py.head())
+
+# Summarise the data
+print('----')
+print(spidermonkey_py.describe()["aggression"])
+
+# Create boxplot
+bp_three = (ggplot(spidermonkey_py, aes("familiarity", "aggression"))
+            + geom_boxplot())
+bp_three.show()
+
+"""
+The data appear to show a very significant difference in aggression rates between the three types of familiarity. We 
+would probably expect a reasonably significant result here.
+"""
+
+"""
+To use the Kruskal-Wallis test we have to make three assumptions:
+
+1. The parent distributions from which the samples are drawn have the same shape (if they’re normal then we should use a 
+   one-way ANOVA)
+2. Each data point in the samples is independent of the others
+3. The parent distributions should have the same variance
+
+Independence we’ll ignore as usual. Similar shape is best assessed from the earlier visualisation of the data. That 
+means that we only need to check equality of variance.
+"""
+
+# Test equality of variance
+print('----')
+print(pg.homoscedasticity(dv="aggression",
+                          group="familiarity",
+                          method="levene",
+                          data=spidermonkey_py))
+
+"""There is equality of variance."""
+
+# Perform a Kruskal-Wallis test
+print('----')
+print(pg.kruskal(dv="aggression",
+                 between="familiarity",
+                 data=spidermonkey_py))
+
+"""
+Since the p-value is very small (much smaller than the standard significance level of 0.05) we can say “that it is very 
+unlikely that these three samples came from the same parent distribution and as such we can reject our null hypothesis” 
+and state that:
+
+            'A Kruskal-Wallis test showed that aggression rates between spidermonkeys depends upon the degree of 
+            familiarity between them (p = 0.0011).'
+"""
+
+# Post-hoc testing (Dunn’s test) #
+
+"""
+The equivalent of Tukey’s range test for non-normal data is Dunn’s test.
+
+Dunn’s test is used to check for significant differences in group medians.
+"""
+
+# Perform Dunn’s test
+print('----')
+print(sp.posthoc_dunn(spidermonkey_py,
+                      val_col="aggression",
+                      group_col="familiarity"))
+
+"""
+The p-values of the pairwise comparisons are reported in the table. This table shows that there isn’t a significant 
+difference between the high and low groups, as the p-value (0.1598) is too high. The other two comparisons between the 
+high familiarity and no familiarity groups and between the low and no groups are significant though.
+"""
+
+
+# Continuous Predictors #
+
+# Linear regression #
+
+"""
+Regression analysis not only tests for an association between two or more variables, but also allows you to investigate 
+quantitatively the nature of any relationship which is present. This can help you determine if one variable may be used 
+to predict values of another. Simple linear regression essentially models the dependence of a scalar dependent variable 
+(y) on an independent (or explanatory) variable (x) according to the relationship:
+
+y=B0+B1x
+
+where B0 is the value of the intercept and B1 is the slope of the fitted line. A linear regression analysis assesses if 
+the coefficient of the slope, B1, is actually different from zero. If it is different from zero then we can say that 
+x has a significant effect on y (since changing x leads to a predicted change in y). If it isn’t significantly 
+different from zero, then we say that there isn’t sufficient evidence of such a relationship. To assess whether the 
+slope is significantly different from zero we first need to calculate the values of B0 and B1.
+"""
+
+"""
+Data
+
+We will perform a simple linear regression analysis on the two variables murder and assault from the USArrests data 
+set. This rather bleak data set contains statistics on arrests per 100,000 residents for assault, murder and robbery in 
+each of the 50 US states in 1973, alongside the proportion of the population who lived in urban areas at that time. We 
+wish to determine whether the assault variable is a significant predictor of the murder variable.
+
+Murder = B0 + B1 * Assault
+
+We will be testing the following null and alternative hypotheses:
+
+H0: assault is not a significant predictor of murder, B1 = 0
+H1: assault is a significant predictor of murder, B1 != 0
+"""
 
 

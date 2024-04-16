@@ -3,3 +3,6 @@ plotnine
 pingouin
 statsmodels
 patchworklib
+scikit_posthocs
+
+
