@@ -143,3 +143,22 @@ with open(outfile, 'a') as file:
     file.write('----------\n' * 2)  # Write two lines of dashes
 
 
+"""
+We have a row in the table for each of the different effects that we’ve asked Python to consider. The last column is 
+the important one as this contains the p-values. We need to look at the interaction row first.
+
+sex:exercise has a p-value of about 4.89e-08 (which is smaller than 0.05) and so we can conclude that the interaction 
+between sex and exercise is significant.
+
+This is where we must stop.
+
+The top two lines (corresponding to the effects of sex and exercise) are meaningless now. This is because the 
+interaction means that we cannot interpret the main effects independently. In this case, weight depends on and the sex 
+and the exercise regime. This means the effect of sex on weight is dependent on exercise (and vice-versa).
+
+We would report this as follows:
+
+            'A two-way ANOVA test showed that there was a significant interaction between the effects of sex and 
+             exercise on weight (p = 4.89e-08). Exercise was associated with a small loss of weight in males but 
+             a larger loss of weight in females.'
+"""
