@@ -1,3 +1,4 @@
+Two-Way ANOVA: Exercise/Sex on Weight
                    sum_sq     df           F        PR(>F)
 exercise      1311.970522    1.0  106.733448  2.177106e-19
 sex           4636.450232    1.0  377.191645  1.760076e-43

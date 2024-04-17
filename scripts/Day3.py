@@ -134,13 +134,12 @@ The assumptions appear to be met well enough, meaning we can implement the ANOVA
 """
 
 # Run the ANOVA to the outputs file
+tb_title_one = 'Two-Way ANOVA: Exercise/Sex on Weight'
 anova_results_one = sm.stats.anova_lm(lm_exercise_py, typ=2)
 anova_one_string = anova_results_one.to_string()  # Convert DataFrame to string
 
-# Open the file in append mode, create if it does not exist
-with open(outfile, 'a') as file:
-    file.write(anova_one_string + '\n')  # Write the ANOVA results
-    file.write('----------\n' * 2)  # Write two lines of dashes
+# Write to output file
+write_to_output(tb_title_one, outfile, anova_one_string)
 
 
 """
