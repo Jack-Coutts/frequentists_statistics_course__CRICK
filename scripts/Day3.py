@@ -35,7 +35,7 @@ work_dir = '/Users/couttsj/Desktop/Statistics_Course/'
 plot_dir = '/Users/couttsj/Desktop/Statistics_Course/outputs/'
 
 # Define output text file
-outfile = '/Users/couttsj/Desktop/Statistics_Course/outputs/day3-Output_File.txt'
+outfile = '/Users/couttsj/Desktop/Statistics_Course/outputs/day3-output_file.txt'
 
 # Load the data
 exercise_py = pd.read_csv(f"{work_dir}data/CS4-exercise.csv")
@@ -128,4 +128,18 @@ Again, we will check these assumptions visually by producing four key diagnostic
 
 # Create the diagnostic plots
 dgplots(plot_dir, 'day3-dg_plots', lm_exercise_py)
+
+"""
+The assumptions appear to be met well enough, meaning we can implement the ANOVA.
+"""
+
+# Run the ANOVA to the outputs file
+anova_results_one = sm.stats.anova_lm(lm_exercise_py, typ=2)
+anova_one_string = anova_results_one.to_string()  # Convert DataFrame to string
+
+# Open the file in append mode, create if it does not exist
+with open(outfile, 'a') as file:
+    file.write(anova_one_string + '\n')  # Write the ANOVA results
+    file.write('----------\n' * 2)  # Write two lines of dashes
+
 
