@@ -7,7 +7,7 @@ from plotnine import *
 import patchworklib as pw
 
 
-def dgplots(results: Type[sm.regression.linear_model.RegressionResultsWrapper]) -> None:
+def dgplots(dir_path, file_name_header, results: Type[sm.regression.linear_model.RegressionResultsWrapper]) -> None:
     if isinstance(results, sm.regression.linear_model.RegressionResultsWrapper) is False:
         raise TypeError("Please provide a model fit.")
     else:
@@ -36,7 +36,7 @@ def dgplots(results: Type[sm.regression.linear_model.RegressionResultsWrapper]) 
                 + ylab("residuals")
                 + theme_bw()
         )
-        p1.show()
+        p1.save(filename=f'{dir_path}{file_name_header}-residuals_plot.png', height=15, width=20, units='cm', dpi=600)
 
         p2 = (
                 ggplot(model_values, aes(sample="residuals"))
@@ -47,7 +47,7 @@ def dgplots(results: Type[sm.regression.linear_model.RegressionResultsWrapper]) 
                 + ylab("sample quantiles")
                 + theme_bw()
         )
-        p2.show()
+        p2.save(filename=f'{dir_path}{file_name_header}-QQ_plot.png', height=15, width=20, units='cm', dpi=600)
 
         p3 = (
                 ggplot(model_values, aes(x="predicted_values", y="std_resid"))
@@ -58,7 +58,7 @@ def dgplots(results: Type[sm.regression.linear_model.RegressionResultsWrapper]) 
                 + ylab(u"\u221A"'|standardised residuals|')
                 + theme_bw()
         )
-        p3.show()
+        p3.save(filename=f'{dir_path}{file_name_header}-location_scale_plot.png', height=15, width=20, units='cm', dpi=600)
 
         p4 = (
                 ggplot(model_values, aes(x="obs", y="cooks_d"))
@@ -71,4 +71,4 @@ def dgplots(results: Type[sm.regression.linear_model.RegressionResultsWrapper]) 
                 + ylab('cook\'s d')
                 + theme_bw()
         )
-        p4.show()
+        p4.save(filename=f'{dir_path}{file_name_header}-influential_points_plot.png', height=15, width=20, units='cm', dpi=600)
