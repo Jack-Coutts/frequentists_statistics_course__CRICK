@@ -347,6 +347,63 @@ dgplots(plot_dir, 'dgs_one', lm_treelight_add_py)
 
 # Multiple Predictors #
 
+"""
+Revisiting the linear model framework and expanding to systems with three predictor variables.
+
+Data:
+
+    The data set we’ll be using is located in data/CS5-pm2_5.csv. It contains data on air pollution levels measured in 
+    London, in 2019. It also contains several meteorological measurements. Each variable was recorded on a daily basis.
+
+Note: some of the variables are based on simulations.
+"""
+
+# Load the data
+pm2_5_py = pd.read_csv(f"{work_dir}data/CS5-pm2_5.csv")
+# View the data
+write_to_output('Head air pollution data', outfile, pm2_5_py.head().to_string())
+
+# Boxplot inner vs outer london
+bp_four_pollution = (ggplot(pm2_5_py, aes(x="location", y="pm2_5"))
+                     + geom_boxplot()
+                     + geom_jitter(width=0.1, alpha=0.7))
+save_plot(f'{plot_dir}day3-bp_four_pollution.png', bp_four_pollution)
+
+
+"""
+I’ve added the (jittered) data to the plot, with some transparency (alpha = 0.7). It’s always good to look at the 
+actual data and not just summary statistics (which is what the box plot is).
+
+There seems to be quite a difference between the PM2.5 levels in the two London areas, with the levels in inner London 
+being markedly higher. I’m not surprised by this! So when we do our statistical testing, I would expect to find a 
+clear difference between the locations.
+
+Apart from the location, there are quite a few numerical descriptor variables. At this point I should probably bite 
+the bullet and install seaborn, so I can use the pairplot() function.
+
+But I’m not going to ;-)
+
+I’ll just tell you that there is not much of a correlation between pm2_5 and avg_temp or rain_mm, whereas there might be something going on in relation to wind_m_s. So I plot that instead and colour it by location:
+"""
+
+# Plot wind vs pm2.5 coloured by loction
+scatt_two_pollut = (ggplot(pm2_5_py, aes(x="wind_m_s", y="pm2_5", colour="location"))
+                    + geom_point())
+save_plot(f'{plot_dir}day3-scatt_two_pollut.png', scatt_two_pollut)
+
+"""
+This seems to show that there might be some linear relationship between PM2.5 levels and wind speed.
+
+If I would plot all the other variables against each other, then I would spot that rainfall seems 
+completely independent of wind speed (rain fall seems pretty constant). Nor does the average temperature seem in any 
+way related to wind speed (it looks like a random collection of data points!). You can check this yourself!
+
+Another way of looking at this would be to create a correlation matrix, like we did before in the correlations chapter:
+"""
+
+# Output correlations between variables
+write_to_output('Correlations Pollution Variables', outfile, str(pm2_5_py.corr()))
+
 
 
 

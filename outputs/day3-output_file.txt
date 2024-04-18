@@ -350,3 +350,625 @@ Notes:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 ----------
 ----------
+Two-Way ANOVA: Exercise/Sex on Weight
+..........
+                   sum_sq     df           F        PR(>F)
+exercise      1311.970522    1.0  106.733448  2.177106e-19
+sex           4636.450232    1.0  377.191645  1.760076e-43
+exercise:sex   404.434414    1.0   32.902172  4.889216e-08
+Residual      1917.556353  156.0         NaN           NaN
+----------
+----------
+Head of Tree Data
+..........
+   id        light  depth  species
+0   1  4105.646110   1.00  Conifer
+1   2  4933.925144   1.75  Conifer
+2   3  4416.527443   2.50  Conifer
+3   4  4528.618186   3.25  Conifer
+4   5  3442.610306   4.00  Conifer
+----------
+----------
+Linear Regression Results
+..........
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  light   R-squared:                       0.938
+Model:                            OLS   Adj. R-squared:                  0.928
+Method:                 Least Squares   F-statistic:                     95.71
+Date:                Wed, 17 Apr 2024   Prob (F-statistic):           1.19e-11
+Time:                        16:28:30   Log-Likelihood:                -174.91
+No. Observations:                  23   AIC:                             357.8
+Df Residuals:                      19   BIC:                             362.4
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+===============================================================================================
+                                  coef    std err          t      P>|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------------------
+Intercept                    7798.5655    298.623     26.115      0.000    7173.541    8423.590
+C(species)[T.Conifer]       -2784.5833    442.274     -6.296      0.000   -3710.274   -1858.893
+depth                        -221.1256     61.802     -3.578      0.002    -350.478     -91.773
+depth:C(species)[T.Conifer]   -71.0357     81.309     -0.874      0.393    -241.217      99.145
+==============================================================================
+Omnibus:                        1.435   Durbin-Watson:                   2.176
+Prob(Omnibus):                  0.488   Jarque-Bera (JB):                1.269
+Skew:                           0.444   Prob(JB):                        0.530
+Kurtosis:                       2.267   Cond. No.                         31.8
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+----------
+----------
+Linear Model w/ no interaction
+..........
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  light   R-squared:                       0.935
+Model:                            OLS   Adj. R-squared:                  0.929
+Method:                 Least Squares   F-statistic:                     144.9
+Date:                Wed, 17 Apr 2024   Prob (F-statistic):           1.26e-12
+Time:                        16:28:30   Log-Likelihood:                -175.37
+No. Observations:                  23   AIC:                             356.7
+Df Residuals:                      20   BIC:                             360.1
+Df Model:                           2                                         
+Covariance Type:            nonrobust                                         
+=========================================================================================
+                            coef    std err          t      P>|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------------
+Intercept              7962.0316    231.356     34.415      0.000    7479.431    8444.633
+C(species)[T.Conifer] -3113.0265    231.586    -13.442      0.000   -3596.106   -2629.947
+depth                  -262.1656     39.922     -6.567      0.000    -345.441    -178.891
+==============================================================================
+Omnibus:                        2.068   Durbin-Watson:                   2.272
+Prob(Omnibus):                  0.356   Jarque-Bera (JB):                1.677
+Skew:                           0.633   Prob(JB):                        0.432
+Kurtosis:                       2.618   Cond. No.                         13.9
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+----------
+----------
+Head air pollution data
+..........
+Two-Way ANOVA: Exercise/Sex on Weight
+..........
+                   sum_sq     df           F        PR(>F)
+exercise      1311.970522    1.0  106.733448  2.177106e-19
+sex           4636.450232    1.0  377.191645  1.760076e-43
+exercise:sex   404.434414    1.0   32.902172  4.889216e-08
+Residual      1917.556353  156.0         NaN           NaN
+----------
+----------
+Head of Tree Data
+..........
+   id        light  depth  species
+0   1  4105.646110   1.00  Conifer
+1   2  4933.925144   1.75  Conifer
+2   3  4416.527443   2.50  Conifer
+3   4  4528.618186   3.25  Conifer
+4   5  3442.610306   4.00  Conifer
+----------
+----------
+Linear Regression Results
+..........
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  light   R-squared:                       0.938
+Model:                            OLS   Adj. R-squared:                  0.928
+Method:                 Least Squares   F-statistic:                     95.71
+Date:                Wed, 17 Apr 2024   Prob (F-statistic):           1.19e-11
+Time:                        16:28:59   Log-Likelihood:                -174.91
+No. Observations:                  23   AIC:                             357.8
+Df Residuals:                      19   BIC:                             362.4
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+===============================================================================================
+                                  coef    std err          t      P>|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------------------
+Intercept                    7798.5655    298.623     26.115      0.000    7173.541    8423.590
+C(species)[T.Conifer]       -2784.5833    442.274     -6.296      0.000   -3710.274   -1858.893
+depth                        -221.1256     61.802     -3.578      0.002    -350.478     -91.773
+depth:C(species)[T.Conifer]   -71.0357     81.309     -0.874      0.393    -241.217      99.145
+==============================================================================
+Omnibus:                        1.435   Durbin-Watson:                   2.176
+Prob(Omnibus):                  0.488   Jarque-Bera (JB):                1.269
+Skew:                           0.444   Prob(JB):                        0.530
+Kurtosis:                       2.267   Cond. No.                         31.8
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+----------
+----------
+Linear Model w/ no interaction
+..........
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  light   R-squared:                       0.935
+Model:                            OLS   Adj. R-squared:                  0.929
+Method:                 Least Squares   F-statistic:                     144.9
+Date:                Wed, 17 Apr 2024   Prob (F-statistic):           1.26e-12
+Time:                        16:28:59   Log-Likelihood:                -175.37
+No. Observations:                  23   AIC:                             356.7
+Df Residuals:                      20   BIC:                             360.1
+Df Model:                           2                                         
+Covariance Type:            nonrobust                                         
+=========================================================================================
+                            coef    std err          t      P>|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------------
+Intercept              7962.0316    231.356     34.415      0.000    7479.431    8444.633
+C(species)[T.Conifer] -3113.0265    231.586    -13.442      0.000   -3596.106   -2629.947
+depth                  -262.1656     39.922     -6.567      0.000    -345.441    -178.891
+==============================================================================
+Omnibus:                        2.068   Durbin-Watson:                   2.272
+Prob(Omnibus):                  0.356   Jarque-Bera (JB):                1.677
+Skew:                           0.633   Prob(JB):                        0.432
+Kurtosis:                       2.618   Cond. No.                         13.9
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+----------
+----------
+Head air pollution data
+..........
+   avg_temp        date location   pm2_5  rain_mm  wind_m_s
+0       4.5  01/01/2019    inner  17.126      2.3      3.87
+1       4.9  01/01/2019    outer  10.821      2.3      5.84
+2       4.3  02/01/2019    inner  14.884      2.3      3.76
+3       4.8  02/01/2019    outer  11.416      2.3      6.00
+4       4.0  03/01/2019    inner  18.471      1.4      2.13
+----------
+----------
+Two-Way ANOVA: Exercise/Sex on Weight
+..........
+                   sum_sq     df           F        PR(>F)
+exercise      1311.970522    1.0  106.733448  2.177106e-19
+sex           4636.450232    1.0  377.191645  1.760076e-43
+exercise:sex   404.434414    1.0   32.902172  4.889216e-08
+Residual      1917.556353  156.0         NaN           NaN
+----------
+----------
+Head of Tree Data
+..........
+   id        light  depth  species
+0   1  4105.646110   1.00  Conifer
+1   2  4933.925144   1.75  Conifer
+2   3  4416.527443   2.50  Conifer
+3   4  4528.618186   3.25  Conifer
+4   5  3442.610306   4.00  Conifer
+----------
+----------
+Linear Regression Results
+..........
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  light   R-squared:                       0.938
+Model:                            OLS   Adj. R-squared:                  0.928
+Method:                 Least Squares   F-statistic:                     95.71
+Date:                Wed, 17 Apr 2024   Prob (F-statistic):           1.19e-11
+Time:                        16:32:13   Log-Likelihood:                -174.91
+No. Observations:                  23   AIC:                             357.8
+Df Residuals:                      19   BIC:                             362.4
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+===============================================================================================
+                                  coef    std err          t      P>|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------------------
+Intercept                    7798.5655    298.623     26.115      0.000    7173.541    8423.590
+C(species)[T.Conifer]       -2784.5833    442.274     -6.296      0.000   -3710.274   -1858.893
+depth                        -221.1256     61.802     -3.578      0.002    -350.478     -91.773
+depth:C(species)[T.Conifer]   -71.0357     81.309     -0.874      0.393    -241.217      99.145
+==============================================================================
+Omnibus:                        1.435   Durbin-Watson:                   2.176
+Prob(Omnibus):                  0.488   Jarque-Bera (JB):                1.269
+Skew:                           0.444   Prob(JB):                        0.530
+Kurtosis:                       2.267   Cond. No.                         31.8
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+----------
+----------
+Linear Model w/ no interaction
+..........
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  light   R-squared:                       0.935
+Model:                            OLS   Adj. R-squared:                  0.929
+Method:                 Least Squares   F-statistic:                     144.9
+Date:                Wed, 17 Apr 2024   Prob (F-statistic):           1.26e-12
+Time:                        16:32:13   Log-Likelihood:                -175.37
+No. Observations:                  23   AIC:                             356.7
+Df Residuals:                      20   BIC:                             360.1
+Df Model:                           2                                         
+Covariance Type:            nonrobust                                         
+=========================================================================================
+                            coef    std err          t      P>|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------------
+Intercept              7962.0316    231.356     34.415      0.000    7479.431    8444.633
+C(species)[T.Conifer] -3113.0265    231.586    -13.442      0.000   -3596.106   -2629.947
+depth                  -262.1656     39.922     -6.567      0.000    -345.441    -178.891
+==============================================================================
+Omnibus:                        2.068   Durbin-Watson:                   2.272
+Prob(Omnibus):                  0.356   Jarque-Bera (JB):                1.677
+Skew:                           0.633   Prob(JB):                        0.432
+Kurtosis:                       2.618   Cond. No.                         13.9
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+----------
+----------
+Head air pollution data
+..........
+   avg_temp        date location   pm2_5  rain_mm  wind_m_s
+0       4.5  01/01/2019    inner  17.126      2.3      3.87
+1       4.9  01/01/2019    outer  10.821      2.3      5.84
+2       4.3  02/01/2019    inner  14.884      2.3      3.76
+3       4.8  02/01/2019    outer  11.416      2.3      6.00
+4       4.0  03/01/2019    inner  18.471      1.4      2.13
+----------
+----------
+Two-Way ANOVA: Exercise/Sex on Weight
+..........
+                   sum_sq     df           F        PR(>F)
+exercise      1311.970522    1.0  106.733448  2.177106e-19
+sex           4636.450232    1.0  377.191645  1.760076e-43
+exercise:sex   404.434414    1.0   32.902172  4.889216e-08
+Residual      1917.556353  156.0         NaN           NaN
+----------
+----------
+Head of Tree Data
+..........
+   id        light  depth  species
+0   1  4105.646110   1.00  Conifer
+1   2  4933.925144   1.75  Conifer
+2   3  4416.527443   2.50  Conifer
+3   4  4528.618186   3.25  Conifer
+4   5  3442.610306   4.00  Conifer
+----------
+----------
+Linear Regression Results
+..........
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  light   R-squared:                       0.938
+Model:                            OLS   Adj. R-squared:                  0.928
+Method:                 Least Squares   F-statistic:                     95.71
+Date:                Wed, 17 Apr 2024   Prob (F-statistic):           1.19e-11
+Time:                        16:38:07   Log-Likelihood:                -174.91
+No. Observations:                  23   AIC:                             357.8
+Df Residuals:                      19   BIC:                             362.4
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+===============================================================================================
+                                  coef    std err          t      P>|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------------------
+Intercept                    7798.5655    298.623     26.115      0.000    7173.541    8423.590
+C(species)[T.Conifer]       -2784.5833    442.274     -6.296      0.000   -3710.274   -1858.893
+depth                        -221.1256     61.802     -3.578      0.002    -350.478     -91.773
+depth:C(species)[T.Conifer]   -71.0357     81.309     -0.874      0.393    -241.217      99.145
+==============================================================================
+Omnibus:                        1.435   Durbin-Watson:                   2.176
+Prob(Omnibus):                  0.488   Jarque-Bera (JB):                1.269
+Skew:                           0.444   Prob(JB):                        0.530
+Kurtosis:                       2.267   Cond. No.                         31.8
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+----------
+----------
+Linear Model w/ no interaction
+..........
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  light   R-squared:                       0.935
+Model:                            OLS   Adj. R-squared:                  0.929
+Method:                 Least Squares   F-statistic:                     144.9
+Date:                Wed, 17 Apr 2024   Prob (F-statistic):           1.26e-12
+Time:                        16:38:07   Log-Likelihood:                -175.37
+No. Observations:                  23   AIC:                             356.7
+Df Residuals:                      20   BIC:                             360.1
+Df Model:                           2                                         
+Covariance Type:            nonrobust                                         
+=========================================================================================
+                            coef    std err          t      P>|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------------
+Intercept              7962.0316    231.356     34.415      0.000    7479.431    8444.633
+C(species)[T.Conifer] -3113.0265    231.586    -13.442      0.000   -3596.106   -2629.947
+depth                  -262.1656     39.922     -6.567      0.000    -345.441    -178.891
+==============================================================================
+Omnibus:                        2.068   Durbin-Watson:                   2.272
+Prob(Omnibus):                  0.356   Jarque-Bera (JB):                1.677
+Skew:                           0.633   Prob(JB):                        0.432
+Kurtosis:                       2.618   Cond. No.                         13.9
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+----------
+----------
+Head air pollution data
+..........
+   avg_temp        date location   pm2_5  rain_mm  wind_m_s
+0       4.5  01/01/2019    inner  17.126      2.3      3.87
+1       4.9  01/01/2019    outer  10.821      2.3      5.84
+2       4.3  02/01/2019    inner  14.884      2.3      3.76
+3       4.8  02/01/2019    outer  11.416      2.3      6.00
+4       4.0  03/01/2019    inner  18.471      1.4      2.13
+----------
+----------
+Two-Way ANOVA: Exercise/Sex on Weight
+..........
+                   sum_sq     df           F        PR(>F)
+exercise      1311.970522    1.0  106.733448  2.177106e-19
+sex           4636.450232    1.0  377.191645  1.760076e-43
+exercise:sex   404.434414    1.0   32.902172  4.889216e-08
+Residual      1917.556353  156.0         NaN           NaN
+----------
+----------
+Head of Tree Data
+..........
+   id        light  depth  species
+0   1  4105.646110   1.00  Conifer
+1   2  4933.925144   1.75  Conifer
+2   3  4416.527443   2.50  Conifer
+3   4  4528.618186   3.25  Conifer
+4   5  3442.610306   4.00  Conifer
+----------
+----------
+Linear Regression Results
+..........
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  light   R-squared:                       0.938
+Model:                            OLS   Adj. R-squared:                  0.928
+Method:                 Least Squares   F-statistic:                     95.71
+Date:                Wed, 17 Apr 2024   Prob (F-statistic):           1.19e-11
+Time:                        16:41:01   Log-Likelihood:                -174.91
+No. Observations:                  23   AIC:                             357.8
+Df Residuals:                      19   BIC:                             362.4
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+===============================================================================================
+                                  coef    std err          t      P>|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------------------
+Intercept                    7798.5655    298.623     26.115      0.000    7173.541    8423.590
+C(species)[T.Conifer]       -2784.5833    442.274     -6.296      0.000   -3710.274   -1858.893
+depth                        -221.1256     61.802     -3.578      0.002    -350.478     -91.773
+depth:C(species)[T.Conifer]   -71.0357     81.309     -0.874      0.393    -241.217      99.145
+==============================================================================
+Omnibus:                        1.435   Durbin-Watson:                   2.176
+Prob(Omnibus):                  0.488   Jarque-Bera (JB):                1.269
+Skew:                           0.444   Prob(JB):                        0.530
+Kurtosis:                       2.267   Cond. No.                         31.8
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+----------
+----------
+Linear Model w/ no interaction
+..........
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  light   R-squared:                       0.935
+Model:                            OLS   Adj. R-squared:                  0.929
+Method:                 Least Squares   F-statistic:                     144.9
+Date:                Wed, 17 Apr 2024   Prob (F-statistic):           1.26e-12
+Time:                        16:41:01   Log-Likelihood:                -175.37
+No. Observations:                  23   AIC:                             356.7
+Df Residuals:                      20   BIC:                             360.1
+Df Model:                           2                                         
+Covariance Type:            nonrobust                                         
+=========================================================================================
+                            coef    std err          t      P>|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------------
+Intercept              7962.0316    231.356     34.415      0.000    7479.431    8444.633
+C(species)[T.Conifer] -3113.0265    231.586    -13.442      0.000   -3596.106   -2629.947
+depth                  -262.1656     39.922     -6.567      0.000    -345.441    -178.891
+==============================================================================
+Omnibus:                        2.068   Durbin-Watson:                   2.272
+Prob(Omnibus):                  0.356   Jarque-Bera (JB):                1.677
+Skew:                           0.633   Prob(JB):                        0.432
+Kurtosis:                       2.618   Cond. No.                         13.9
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+----------
+----------
+Head air pollution data
+..........
+   avg_temp        date location   pm2_5  rain_mm  wind_m_s
+0       4.5  01/01/2019    inner  17.126      2.3      3.87
+1       4.9  01/01/2019    outer  10.821      2.3      5.84
+2       4.3  02/01/2019    inner  14.884      2.3      3.76
+3       4.8  02/01/2019    outer  11.416      2.3      6.00
+4       4.0  03/01/2019    inner  18.471      1.4      2.13
+----------
+----------
+Two-Way ANOVA: Exercise/Sex on Weight
+..........
+                   sum_sq     df           F        PR(>F)
+exercise      1311.970522    1.0  106.733448  2.177106e-19
+sex           4636.450232    1.0  377.191645  1.760076e-43
+exercise:sex   404.434414    1.0   32.902172  4.889216e-08
+Residual      1917.556353  156.0         NaN           NaN
+----------
+----------
+Head of Tree Data
+..........
+   id        light  depth  species
+0   1  4105.646110   1.00  Conifer
+1   2  4933.925144   1.75  Conifer
+2   3  4416.527443   2.50  Conifer
+3   4  4528.618186   3.25  Conifer
+4   5  3442.610306   4.00  Conifer
+----------
+----------
+Linear Regression Results
+..........
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  light   R-squared:                       0.938
+Model:                            OLS   Adj. R-squared:                  0.928
+Method:                 Least Squares   F-statistic:                     95.71
+Date:                Wed, 17 Apr 2024   Prob (F-statistic):           1.19e-11
+Time:                        16:41:43   Log-Likelihood:                -174.91
+No. Observations:                  23   AIC:                             357.8
+Df Residuals:                      19   BIC:                             362.4
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+===============================================================================================
+                                  coef    std err          t      P>|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------------------
+Intercept                    7798.5655    298.623     26.115      0.000    7173.541    8423.590
+C(species)[T.Conifer]       -2784.5833    442.274     -6.296      0.000   -3710.274   -1858.893
+depth                        -221.1256     61.802     -3.578      0.002    -350.478     -91.773
+depth:C(species)[T.Conifer]   -71.0357     81.309     -0.874      0.393    -241.217      99.145
+==============================================================================
+Omnibus:                        1.435   Durbin-Watson:                   2.176
+Prob(Omnibus):                  0.488   Jarque-Bera (JB):                1.269
+Skew:                           0.444   Prob(JB):                        0.530
+Kurtosis:                       2.267   Cond. No.                         31.8
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+----------
+----------
+Linear Model w/ no interaction
+..........
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  light   R-squared:                       0.935
+Model:                            OLS   Adj. R-squared:                  0.929
+Method:                 Least Squares   F-statistic:                     144.9
+Date:                Wed, 17 Apr 2024   Prob (F-statistic):           1.26e-12
+Time:                        16:41:43   Log-Likelihood:                -175.37
+No. Observations:                  23   AIC:                             356.7
+Df Residuals:                      20   BIC:                             360.1
+Df Model:                           2                                         
+Covariance Type:            nonrobust                                         
+=========================================================================================
+                            coef    std err          t      P>|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------------
+Intercept              7962.0316    231.356     34.415      0.000    7479.431    8444.633
+C(species)[T.Conifer] -3113.0265    231.586    -13.442      0.000   -3596.106   -2629.947
+depth                  -262.1656     39.922     -6.567      0.000    -345.441    -178.891
+==============================================================================
+Omnibus:                        2.068   Durbin-Watson:                   2.272
+Prob(Omnibus):                  0.356   Jarque-Bera (JB):                1.677
+Skew:                           0.633   Prob(JB):                        0.432
+Kurtosis:                       2.618   Cond. No.                         13.9
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+----------
+----------
+Head air pollution data
+..........
+   avg_temp        date location   pm2_5  rain_mm  wind_m_s
+0       4.5  01/01/2019    inner  17.126      2.3      3.87
+1       4.9  01/01/2019    outer  10.821      2.3      5.84
+2       4.3  02/01/2019    inner  14.884      2.3      3.76
+3       4.8  02/01/2019    outer  11.416      2.3      6.00
+4       4.0  03/01/2019    inner  18.471      1.4      2.13
+----------
+----------
+Two-Way ANOVA: Exercise/Sex on Weight
+..........
+                   sum_sq     df           F        PR(>F)
+exercise      1311.970522    1.0  106.733448  2.177106e-19
+sex           4636.450232    1.0  377.191645  1.760076e-43
+exercise:sex   404.434414    1.0   32.902172  4.889216e-08
+Residual      1917.556353  156.0         NaN           NaN
+----------
+----------
+Head of Tree Data
+..........
+   id        light  depth  species
+0   1  4105.646110   1.00  Conifer
+1   2  4933.925144   1.75  Conifer
+2   3  4416.527443   2.50  Conifer
+3   4  4528.618186   3.25  Conifer
+4   5  3442.610306   4.00  Conifer
+----------
+----------
+Linear Regression Results
+..........
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  light   R-squared:                       0.938
+Model:                            OLS   Adj. R-squared:                  0.928
+Method:                 Least Squares   F-statistic:                     95.71
+Date:                Thu, 18 Apr 2024   Prob (F-statistic):           1.19e-11
+Time:                        09:33:04   Log-Likelihood:                -174.91
+No. Observations:                  23   AIC:                             357.8
+Df Residuals:                      19   BIC:                             362.4
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+===============================================================================================
+                                  coef    std err          t      P>|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------------------
+Intercept                    7798.5655    298.623     26.115      0.000    7173.541    8423.590
+C(species)[T.Conifer]       -2784.5833    442.274     -6.296      0.000   -3710.274   -1858.893
+depth                        -221.1256     61.802     -3.578      0.002    -350.478     -91.773
+depth:C(species)[T.Conifer]   -71.0357     81.309     -0.874      0.393    -241.217      99.145
+==============================================================================
+Omnibus:                        1.435   Durbin-Watson:                   2.176
+Prob(Omnibus):                  0.488   Jarque-Bera (JB):                1.269
+Skew:                           0.444   Prob(JB):                        0.530
+Kurtosis:                       2.267   Cond. No.                         31.8
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+----------
+----------
+Linear Model w/ no interaction
+..........
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  light   R-squared:                       0.935
+Model:                            OLS   Adj. R-squared:                  0.929
+Method:                 Least Squares   F-statistic:                     144.9
+Date:                Thu, 18 Apr 2024   Prob (F-statistic):           1.26e-12
+Time:                        09:33:04   Log-Likelihood:                -175.37
+No. Observations:                  23   AIC:                             356.7
+Df Residuals:                      20   BIC:                             360.1
+Df Model:                           2                                         
+Covariance Type:            nonrobust                                         
+=========================================================================================
+                            coef    std err          t      P>|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------------
+Intercept              7962.0316    231.356     34.415      0.000    7479.431    8444.633
+C(species)[T.Conifer] -3113.0265    231.586    -13.442      0.000   -3596.106   -2629.947
+depth                  -262.1656     39.922     -6.567      0.000    -345.441    -178.891
+==============================================================================
+Omnibus:                        2.068   Durbin-Watson:                   2.272
+Prob(Omnibus):                  0.356   Jarque-Bera (JB):                1.677
+Skew:                           0.633   Prob(JB):                        0.432
+Kurtosis:                       2.618   Cond. No.                         13.9
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+----------
+----------
+Head air pollution data
+..........
+   avg_temp        date location   pm2_5  rain_mm  wind_m_s
+0       4.5  01/01/2019    inner  17.126      2.3      3.87
+1       4.9  01/01/2019    outer  10.821      2.3      5.84
+2       4.3  02/01/2019    inner  14.884      2.3      3.76
+3       4.8  02/01/2019    outer  11.416      2.3      6.00
+4       4.0  03/01/2019    inner  18.471      1.4      2.13
+----------
+----------
