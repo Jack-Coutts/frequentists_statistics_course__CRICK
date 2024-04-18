@@ -127,7 +127,7 @@ Again, we will check these assumptions visually by producing four key diagnostic
 """
 
 # Create the diagnostic plots
-dgplots(plot_dir, 'day3-dg_plots', lm_exercise_py)
+dgplots(plot_dir, 'day3-dg_plots_one', lm_exercise_py)
 
 """
 The assumptions appear to be met well enough, meaning we can implement the ANOVA.
@@ -335,7 +335,7 @@ Anyway, hopefully you’ve got the gist of checking assumptions for linear model
 """
 
 # Plot diagnostic plots
-dgplots(plot_dir, 'dgs_one', lm_treelight_add_py)
+dgplots(plot_dir, 'day3-dg_plots_two', lm_treelight_add_py)
 
 """
 - The Residuals plot looks OK, no systematic pattern.
