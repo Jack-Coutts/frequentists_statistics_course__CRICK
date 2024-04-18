@@ -140,3 +140,121 @@ sample_size = pg.power_ttest(d=0.5,
                              power=0.80)
 write_to_output('Sample Size', outfile, str(sample_size))
 
+"""
+The output n = 63.76 tells that we need 64 (rounding up) students in each group (so 128 in total) in order to carry out 
+this study with sufficient power.
+"""
+
+"""
+What is I need to calculate the effect size as my sample size is predetermined?
+
+If I know in advance that I can only observe 30 students per group, what is the effect size that I should be able 
+to observe with 80% power at a 5% significance level?
+"""
+
+# Calculate the effect size
+effect_size = pg.power_ttest(n=30,
+                             alpha=0.05,
+                             power=0.80,
+                             contrast="two-samples",
+                             alternative="two-sided")
+write_to_output('Effect Size', outfile, str(effect_size))
+
+
+"""
+This time we want to see what the effect size is so we look at the second line and we can see that an experiment with 
+this many people would only be expected to detect a difference in means of d = 0.74 standard deviations. Is this good 
+or bad? Well, it depends on the natural variation of your data; if your data is really noisy then it will have a large 
+variation and a large standard deviation which will mean that 0.74 standard deviations might actually be quite a big 
+difference between your groups. If on the other hand your data doesn’t vary very much, then 0.74 standard deviations 
+might actually be a really small number and this test could pick up even quite small differences in mean.
+"""
+
+
+"""
+In both of the previous two examples we were a little bit context-free in terms of effect size. Let’s look at how we 
+can use a pilot study with real data to calculate effect sizes and perform a power analysis to inform a future study.
+
+Let’s look again at the fishlength data we saw in the first practical relating to the lengths of fish from two 
+separate rivers.
+"""
+
+# Read in the data
+fishlength_py = pd.read_csv(f"{work_dir}data/CS1-twosample.csv")
+
+# Visualise the data
+fish_bp_one = (ggplot(fishlength_py, aes(x="river", y="length"))
+               + geom_boxplot())
+save_plot(f'{plot_dir}day4-fish_bp_one.png', fish_bp_one)
+
+"""
+From the plot we can see that the groups appear to have different means. This difference is significant, as per a 
+two-sample t-test.
+"""
+
+# The ttest() function in pingouin needs two vectors as input, so we split the data
+aripo = fishlength_py.query('river == "Aripo"')["length"]
+guanapo = fishlength_py.query('river == "Guanapo"')["length"]
+
+# Perform the t test
+fish_ttest = pg.ttest(aripo, guanapo, correction=False).transpose()
+write_to_output('Fish t-Test', outfile, fish_ttest.to_string())
+
+"""
+Can we use this information to design a more efficient experiment? One that we would be confident was powerful enough 
+to pick up a difference in means as big as was observed in this study but with fewer observations?
+
+Let’s first work out exactly what the effect size of this previous study really was by estimating Cohen’s d using this 
+data.
+"""
+
+# Calculate effect size in the data we carried out the t-test on
+fish_effect_size = pg.compute_effsize(aripo, guanapo, paired=False, eftype="cohen")
+write_to_output('Fish Effect Size', outfile, str(fish_effect_size))
+
+"""
+So, the Cohen’s d value for these data are d = 0.94 .
+
+We can now actually answer our question and see how many fish we really need to catch in the future:
+"""
+# Calculate Sample Size needed in future
+future_fish_sample_size = pg.power_ttest(d=0.94, alpha=0.05, power=0.80, contrast="two-samples", alternative="two-sided")
+write_to_output("Future Fish Sample Size", outfile, str(future_fish_sample_size))
+
+"""
+From this we can see that any future experiments would really only need to use 19 fish for each group (we always round 
+this number up, so no fish will be harmed during the experiment…) if we wanted to be confident of detecting the 
+difference we observed in the previous study.
+
+This approach can also be used when the pilot study showed a smaller effect size that wasn’t observed to be significant 
+(indeed arguably, a pilot study shouldn’t really concern itself with significance but should only really be used as a 
+way of assessing potential effect sizes which can then be used in a follow-up study).
+"""
+
+# Linear Model Power Calculations
+
+"""
+Let’s read in data/CS2-lobsters.csv. This data set was used in an earlier practical and describes the effect of 
+three different food sources on lobster weight.
+
+As a quick reminder we’ll also plot the data and perform an ANOVA:
+"""
+
+# Read in the data
+lobsters_py = pd.read_csv(f"{work_dir}data/CS2-lobsters.csv")
+
+# Visualise the data in a box plot
+lobsters_bp_one = (ggplot(lobsters_py, aes(x="diet", y="weight"))
+                   + geom_boxplot())
+save_plot(f'{plot_dir}day4-lobsters_bp_one.png', lobsters_bp_one)
+
+# Create a linear model
+model = smf.ols(formula="weight ~ C(diet)", data=lobsters_py)
+# Get the fitted parameters of the model
+lm_lobsters_py = model.fit()
+
+# perform the anova on the fitted model
+lobster_anova = sm.stats.anova_lm(lm_lobsters_py)
+write_to_output('Lobster ANOVA', outfile, lobster_anova.to_string())
+
+
