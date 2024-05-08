@@ -22,13 +22,19 @@ determine the statistical tests that will be needed to analyse the data (as show
 #### What makes a good research question?
 
 A good research question will focus on a single topic. It should not encompass other topics or be two questions veiled 
-as one. A focussed, specific research question will allow you to get much more from your statistics. The question must 
-have specific, measurable independent and dependent variables. A research question should also be useful/relevant, 
+as one. A focussed and specific research question will allow you to get much more from your statistics. The question must 
+have measurable independent and dependent variables. A research question should also be useful/relevant, 
 achievable, based on objective metrics, and free from any assumptions. 
 
 #### What happens if you don't have a research question?
 
-What happens when you don't have a specific research question, but you have data? In this situation, several techniques 
-are commonly applied to draw initial insights which can then be used to generate a research question. The research 
-question generated from these exploratory analyses can then be tested (using statistics) to assess whether the results 
-are likely to be the occurring by chance.
+What happens when you have data, but you don't have a specific research question? In this situation, several techniques 
+are commonly applied to draw out initial insights which can then be used to generate a research question. The research 
+question generated from this exploratory analysis can then be tested (using statistics) to assess whether the results 
+are likely to have occurred by chance. These exploratory techniques include things like PCA, data mining, and 
+clustering methods. 
+
+## 2. Statistical Inference
+
+Statistical inference is the process of drawing conclusions about a population based on a smaller subset of that 
+population known as a sample.
