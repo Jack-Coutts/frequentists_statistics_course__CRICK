@@ -257,4 +257,92 @@ lm_lobsters_py = model.fit()
 lobster_anova = sm.stats.anova_lm(lm_lobsters_py)
 write_to_output('Lobster ANOVA', outfile, lobster_anova.to_string())
 
+"""
+The box plot shows us that there might well be some differences between groups.
+
+The ANOVA analysis though shows that there isn’t sufficient evidence to support that claim given the insignificant 
+p-value we observe.
+
+So the question we can ask is:
+
+If there really is a difference between the different food sources as big as appears here, how big a sample would we 
+need in order to be able to detect it statistically?
+
+First let’s calculate the observed effect size from this study.
+"""
+
+"""
+For linear models the effect size metric we use is called eta-squared.
+
+The eta-squared value measures the contribution of the individual model terms. This is closely linked to the value, 
+which measures the total amount of variation that is explained by the entire model.
+
+Since we only have one model term here (diet), the r-squared and eta values are the same.
+
+We can get the r-squared (0.1797) value from the model as follows:
+"""
+
+# Get the R2 value
+R2 = lm_lobsters_py.rsquared
+
+"""
+We can use the eta-squared value in the power_anova() function from pingouin.
+
+If we’re trying to figure out the sample size, we need to give it the following information:
+
+- eta_squared, the effect size we’re after (we saved this as R2)
+- k, the number of groups (three, in our case)
+- power, the statistical power we’re after, in this case 80%
+- alpha, the significance threshold at which we want to detect it
+"""
+
+# Find the sample size
+lobster_sample_size = pg.power_anova(eta_squared=R2, k=3, power=0.80, alpha=0.05)
+write_to_output("Lobster Sample Size Needed", outfile, str(lobster_sample_size))
+
+"""
+There are two questions you might now ask (if you’re still following all of this that is – you’re quite possibly 
+definitely in need of a coffee by now):
+
+1. How many observations should go into each group?
+   - ideally they should be equally distributed (so in this case 16 per group).
+2. Why is this so complicated, why isn’t there just a single function that just does this, and just tells me how many 
+   observations I need?
+   - Very good question – I have no answer to that sorry – sometimes life is just hard.
+"""
+
+"""
+Like we’ve seen before in the previous sessions, the r-squared value can give us an indication of how much of the 
+variance is explained by our model.
+
+Sometimes you also come across eta-squared. What that does is that it partitions eta-squared across the predictors. 
+This means that eta-squared represents how much variance is explained by each of the predictors. If you have multiple 
+predictors, then you would get multiple values.
+
+In the case where there is one predictor, r-squared = eta-squared.
+"""
+
+# Generalised Linear Models (GLMs) #
+
+"""
+The generalised Linear model is an extension of the linear model, but it is made more flexible in two ways:
+
+1. In a standard linear model the linear combination (e.g. like we see above) becomes the predicted outcome value. With 
+   a GLM a transformation is specified, which turns the linear combination into the predicted outcome value. This is 
+   called a link function.
+2. A standard linear model assumes a continuous, normally distributed outcome, whereas with GLM the outcome can be both 
+   continuous or integer. Furthermore, the outcome does not have to be normally distributed. Indeed, the outcome can 
+   follow a different kind of distribution, such as binomial, Poisson, exponential etc.
+"""
+
+# Rats - t-Test
+rats_effect_size = pg.power_ttest(n=25,
+                                  alpha=0.05,
+                                  power=0.80)
+write_to_output('Rats Effect Size', outfile, str(rats_effect_size))
+
+""" 
+Measurable effect size is 0.81 which is not great - will not be able to measure small effect sizes.
+"""
+
 
