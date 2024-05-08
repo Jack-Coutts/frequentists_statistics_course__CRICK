@@ -37,4 +37,11 @@ clustering methods.
 ## 2. Statistical Inference
 
 Statistical inference is the process of drawing conclusions about a population based on a smaller subset of that 
-population known as a sample.
+population known as a sample. A population refers to the complete set of 'things' that you want to know something about. 
+For example, if you are looking at human height, then the population would be all humans. However, if you are interested 
+in cancer incidence in UK adults over the age of 40, then the population would be all adults in the UK over the age of 40. 
+It is typically not feasible to work with the entire population of interest so a smaller sample of the population is 
+used. Researchers aim for the sample to be representative of the population as a whole but this can be challenging 
+and difficult to assess. As a result, a simplifying framework is used. This framework is known as a distribution. 
+
+
