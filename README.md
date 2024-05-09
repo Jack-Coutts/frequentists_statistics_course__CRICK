@@ -107,9 +107,9 @@ test statistic if the null hypothesis was true. This probability is known as a *
 6. Interpret the results of the statistical test. Based on the calculated test statistic and p-value, you will either 
 reject or fail to reject the null hypothesis. Reject H₀ if p-value < α. Fail to reject H₀ if p-value ≥ α.
 
-In summary, you have a parent distribution, generate a null hypothesis about the parent distribution and it's parameters, 
-collect the data, choose a test statistic based on the data and distribution, calculate the statistic for your data, 
-assess how probable that statistic is if the null hypothesis is true, and the reject or fail to reject the null 
+In summary, you have a parent distribution, you generate a null hypothesis about the parent distribution, collect the 
+data, choose a test statistic based on the data & distribution, calculate the statistic for your data, 
+assess how probable that statistic is assuming the null hypothesis is true, and then reject or fail to reject the null 
 hypothesis. This process is outlined in figure 4.
 
 ![](./images/classical_hypothesis_test.png)  
