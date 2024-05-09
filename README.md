@@ -113,6 +113,6 @@ assess how probable that statistic is if the null hypothesis is true, and the re
 hypothesis. This process is outlined in figure 4.
 
 ![](./images/classical_hypothesis_test.png)  
-*Figure 4. Process of classical hypothesis testing - the numbers and graphs here are fictional and NOT accurate.*
+*Figure 4. Process of classical hypothesis testing - the numbers/graphs are fictional and NOT accurate.*
 
 #### Hypothesis Testing in Practice
