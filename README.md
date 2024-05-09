@@ -42,6 +42,15 @@ For example, if you are looking at human height, then the population would be al
 in cancer incidence in UK adults over the age of 40, then the population would be all adults in the UK over the age of 40. 
 It is typically not feasible to work with the entire population of interest so a smaller sample of the population is 
 used. Researchers aim for the sample to be representative of the population as a whole but this can be challenging 
-and difficult to assess. As a result, a simplifying framework is used. This framework is known as a distribution. 
+and difficult to assess. As a result, a simplifying framework is used. This framework is known as a probability 
+distribution. 
+
+A probability distribution describes the likelihood of an individual from the population having a given value for a 
+variable/feature of interest, if that individual was selected at random. The most famous probability distribution is 
+the Gaussian distribution, more commonly called a Normal distribution or a Bell Curve, which is shown in figure 2.
+
+![](./images/normal_distribution.png)
+* Figure 2. A Normal Distribution.*
+
 
 
