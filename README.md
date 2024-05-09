@@ -3,7 +3,7 @@
 ***This directory contains all the scripts and data from the above course - attended by Jack Coutts from the 15th to 
 the 19th of April 2024.***
 
-*The notes from the course are contained below in the README.*
+*My notes from the course are contained below in the README.*
 
 # Contents
 1. The Research Question
@@ -58,6 +58,9 @@ example, the mean global height in humans is 169 cm.
 ![](./images/normal_distribution.png)  
 *Figure 2. A Normal distribution representing global heights.*
 
+![](./images/other_distributions.png)  
+*Figure 3. A grid showing distributions other than just a normal distribution.*
+
 **Parameters** and **Statistics** are key terms which can be easy to confuse when working with samples and 
 distributions. Parameters refer to values you obtain from a distribution, and statistics refer to values you get from a 
 sample (data which is subset of a population). The mean and median statistics from a sample are typically a good 
@@ -101,8 +104,15 @@ null hypothesis's expected effect. The value of the test statistic reflects the 
 data and the null hypothesis. For any given test/distribution/statistic, the test statistic will follow a theoretical 
 distribution and statistical tests will use this distribution to determine the probability of obtaining the observed 
 test statistic if the null hypothesis was true. This probability is known as a **p-value**.
-6. Interpret the results of the statistical test. Based on the calculated test statistic and p-value, either reject or 
-accept the null hypothesis. Reject H₀ if p-value < α. Accept H₀ if p-value ≥ α.
+6. Interpret the results of the statistical test. Based on the calculated test statistic and p-value, you will either 
+reject or fail to reject the null hypothesis. Reject H₀ if p-value < α. Fail to reject H₀ if p-value ≥ α.
 
+In summary, you have a parent distribution, generate a null hypothesis about the parent distribution and it's parameters, 
+collect the data, choose a test statistic based on the data and distribution, calculate the statistic for your data, 
+assess how probable that statistic is if the null hypothesis is true, and the reject or fail to reject the null 
+hypothesis. This process is outlined in figure 4.
+
+![](./images/classical_hypothesis_test.png)  
+*Figure 4. Process of classical hypothesis testing - the numbers and graphs here are fictional and NOT accurate.*
 
 #### Hypothesis Testing in Practice
