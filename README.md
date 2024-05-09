@@ -50,7 +50,7 @@ variable/feature of interest, if that individual was selected at random. The mos
 the Gaussian distribution, more commonly called a Normal distribution or a Bell Curve, which is shown in figure 2.
 
 ![](./images/normal_distribution.png)
-* Figure 2. A Normal Distribution.*
+*Figure 2. A Normal Distribution.*
 
 
 
