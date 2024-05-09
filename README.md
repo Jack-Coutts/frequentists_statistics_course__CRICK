@@ -68,8 +68,41 @@ when considering global human height you are unlikely to sample the shortest and
 different statistic called the sample variance is used instead of variance when estimating the population variance. The 
 sample variance (S²) applies a correction to make it a better estimate of the population variance.
 
+Ultimately, statistical inference involves two things:
+1. Estimating the population parameters.
+2. Testing hypotheses regarding the population parameters. 
 
-
-
+Here, a hypothesis refers to an assumption about the shape of the distribution and/or an assumption about a parameter 
+value.
 
 ## 3. Hypothesis Testing
+
+Hypothesis testing involves asking testable questions that your data can answer.  
+
+#### Classical Hypothesis Testing
+
+1. Determine a population(s) of interest (parent distribution).
+2. Formulate a **Null Hypothesis (H₀)** and an **Alternative Hypothesis (H₁)**. These are two opposing assumptions 
+about the parent distribution and it's parameters. The null hypothesis is the default assumption that there is no effect 
+or no difference in the population. For example, if you are testing a new drug, the null hypothesis might be that the 
+drug has no effect on blood pressure compared to a placebo. The alternative hypothesis is what you suspect might be true 
+instead of the null hypothesis. In our drug example, the alternative hypothesis could be that the new drug decreases 
+patient blood pressure.
+3. Collect the data from a sample of the parent distribution. Here the sample distribution is obtained.
+4. Select a significance level. This is typically ⍺ = 0.05 which indicates a 5% risk of concluding that a difference 
+exists when there is none. This form of incorrect conclusion is known as Type I error.
+5. Choose a statistical test and calculate the test statistic. To choose this test, the researchers need an idea of 
+what type of distribution the parent distribution is. If the parent distribution type is unknown, a different type of 
+test will be selected and these types of tests (known as non-parametric tests) will be discussed later. A statistical 
+test will be based on **test statistic**. A test statistic is a value that is calculated to serve as a bridge between 
+the data collected in the study and the decisions made based on that data. A test statistic is a single number used to 
+summarise the data where it's primary purpose is to measure how far your sample's observed effect deviates from the 
+null hypothesis's expected effect. The value of the test statistic reflects the degree of agreement between the sample 
+data and the null hypothesis. For any given test/distribution/statistic, the test statistic will follow a theoretical 
+distribution and statistical tests will use this distribution to determine the probability of obtaining the observed 
+test statistic if the null hypothesis was true. This probability is known as a **p-value**.
+6. Interpret the results of the statistical test. Based on the calculated test statistic and p-value, either reject or 
+accept the null hypothesis. Reject H₀ if p-value < α. Accept H₀ if p-value ≥ α.
+
+
+#### Hypothesis Testing in Practice
