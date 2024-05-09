@@ -116,3 +116,5 @@ hypothesis. This process is outlined in figure 4.
 *Figure 4. Process of classical hypothesis testing - the numbers/graphs are fictional and NOT accurate.*
 
 #### Hypothesis Testing in Practice
+
+In practice, the process is generally a bit different to what is outlined in the section above.
