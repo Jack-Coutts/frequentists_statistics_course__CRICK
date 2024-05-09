@@ -49,7 +49,7 @@ A probability distribution describes the likelihood of an individual from the po
 variable/feature of interest, if that individual was selected at random. The most famous probability distribution is 
 the Gaussian distribution, more commonly called a Normal distribution or a Bell Curve, which is shown in figure 2.
 
-![](./images/normal_distribution.png)
+![](./images/normal_distribution.png)  
 *Figure 2. A Normal Distribution.*
 
 
