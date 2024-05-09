@@ -1,12 +1,14 @@
 # 'Analyse Your Own Data' - University of Cambridge Statistics Course
 
-***This directory contains all the scripts and data from the above course - attended on the 15th to 19th of April 2024.***
+***This directory contains all the scripts and data from the above course - attended by Jack Coutts from the 15th to 
+the 19th of April 2024.***
 
 *The notes from the course are contained below in the README.*
 
 # Contents
 1. The Research Question
 2. Statistical Inference 
+3. Hypothesis Testing
 
 ## 1. The Research Question
 
@@ -47,10 +49,27 @@ distribution.
 
 A probability distribution describes the likelihood of an individual from the population having a given value for a 
 variable/feature of interest, if that individual was selected at random. The most famous probability distribution is 
-the Gaussian distribution, more commonly called a Normal distribution or a Bell Curve, which is shown in figure 2.
+the Gaussian distribution, more commonly called a Normal distribution or a Bell Curve, which is shown in figure 2. For 
+most continuous variables, you can abstract your population to a normal distribution. In simple terms, a distribution 
+is supposed to show how things would look if you had your whole population. From your distribution, you can estimate 
+the population parameters like the mean, median, and variance. You can generate hypotheses from distributions; for 
+example, the mean global height in humans is 169 cm. 
 
 ![](./images/normal_distribution.png)  
-*Figure 2. A Normal Distribution.*
+*Figure 2. A Normal distribution representing global heights.*
+
+**Parameters** and **Statistics** are key terms which can be easy to confuse when working with samples and 
+distributions. Parameters refer to values you obtain from a distribution, and statistics refer to values you get from a 
+sample (data which is subset of a population). The mean and median statistics from a sample are typically a good 
+estimate for their counterpart parameters (the mean and median of the population - which is represented by a distribution).
+This is not the case for the variance, the variance statistic is very unlikely to be a good estimate of the variance 
+parameter. This is because a sample of a population is highly unlikely to contain the most extreme values; for example, 
+when considering global human height you are unlikely to sample the shortest and tallest person. Consequently, a 
+different statistic called the sample variance is used instead of variance when estimating the population variance. The 
+sample variance (S²) applies a correction to make it a better estimate of the population variance.
 
 
 
+
+
+## 3. Hypothesis Testing
