@@ -3,4 +3,6 @@
 ***This directory contains all the scripts and data from the above course - attended by Jack Coutts from the 15th to 
 the 19th of April 2024.***
 
-*My notes from the course are contained above in the .*
+My notes from the course are contained above in the `stats_course_notes.pdf` file and represent my interprettaion of the course materials.
+
+
