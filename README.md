@@ -5,4 +5,4 @@ the 19th of April 2024.***
 
 My notes from the course are contained above in the `stats_course_notes.pdf` file and represent my interpretation of the course materials.
 
-
+The code in this repository has not been finalised as many of the daily course materials were not completed. These files will be cleaned up for better interpretability.
